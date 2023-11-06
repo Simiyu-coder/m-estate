@@ -6,7 +6,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 dotenv.config();
 
-mongoose.connect('mongodb+srv://Simiyu:kellyvin@m-estate.jyysvjh.mongodb.net/m-estate?retryWrites=true&w=majority').then (() => {
+mongoose.connect(process.env.MONGO).then (() => {
     console.log('Connected to Database');
 }).catch((err) => {
     console.log(err);
