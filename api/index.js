@@ -2,18 +2,21 @@ import express from 'express'
 import mongoose from 'mongoose';
 import userRouter from './routes/user.route.js'
 import authRouter from './routes/auth.route.js'
+import cors from 'cors'
 import dotenv from 'dotenv'
 dotenv.config();
 
-
-
-mongoose.connect(process.env.MONGO).then (() => {
+mongoose.connect('mongodb+srv://Simiyu:kellyvin@m-estate.jyysvjh.mongodb.net/m-estate?retryWrites=true&w=majority').then (() => {
     console.log('Connected to Database');
 }).catch((err) => {
     console.log(err);
 })
 
 const app = express();
+ 
+app.use((cors({
+    methods:['GET', 'POST']
+})))
 
 app.use(express.json());
 
